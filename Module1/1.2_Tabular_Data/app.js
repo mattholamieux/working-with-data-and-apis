@@ -1,13 +1,49 @@
-async function getData() {
- const response = await fetch('YearTemp.csv');
- const data = await response.text();
- const table = data.split('\n').slice(1);
- table.forEach(row => {
-     const columns = row.split(',');
-     const year = columns[0];
-     const temp = columns[1];
-     console.log(year, temp);
- })
+
+chartIt();
+
+async function chartIt() {
+    const data = await getData();
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.xlabels,
+            datasets: [{
+                label: 'Global Average Temperature',
+                data: data.tempVals,
+                backgroundColor: 'rgb(0,0,0)', 
+                fill: false
+            }]
+        }, 
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        // Include a dollar sign in the ticks
+                        callback: function(value, index, values) {
+                            return value + '°';
+                        }
+                    }
+                }]
+            }
+        }
+    });
 }
 
-getData();
+
+async function getData() {
+    const xlabels = [];
+    const tempVals = [];        
+    const response = await fetch('YearTemp.csv');
+    const data = await response.text();
+    const table = data.split('\n').slice(1);
+    table.forEach(row => {
+        const columns = row.split(',');
+        const year = columns[0];
+        xlabels.push(year);
+        const temp = columns[1];
+        tempVals.push(parseFloat(temp) + 14);
+        console.log(year, temp);
+    })
+    return {xlabels, tempVals};
+}
