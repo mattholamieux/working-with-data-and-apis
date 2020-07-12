@@ -107,7 +107,7 @@ async function chartIt(facility) {
             },
             title: {
                 display: true,
-                text: ['Covid-19 in California Prisons']
+                text: ['Covid-19 in US Prisons']
             }
         }
     });
