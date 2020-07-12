@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid in Prisons</title>
+    <script src="Chart.js"></script>
+</head>
+<body>
+   
+    <div id="chart-container" style="position: relative; width: 80vw;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div id="state-dropdown-div" style="margin: 1rem 2rem;">
+        <label for="stateMenu">Choose a state:</label>
+        <select name="states" id="stateMenu" style="width: 10rem"></select>
+    </div>
+    <div id="facility-dropdown-div" style="margin: 1rem 2rem;">
+        <label for="facilityMenu">Choose a facility:</label>
+        <select name="facilities" id="facilityMenu" style="width: 20rem"></select>
+    </div>
+    <div id="instructions" style="margin: 1rem 2rem;">
+        <p>Click legend categories at top to toggle visibility</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
