@@ -1,32 +1,27 @@
-console.log('welcome to working with data and apis in javascript');
+// Example using async/await
 
-
-async function catchRainbow() {
-   const response = await fetch('rainbow.jpg');
-   const blob = await response.blob();
-   document.getElementById('rainbow').src = URL.createObjectURL(blob);
+const catchRainbow = async() => {
+    const response = await fetch('rainbow.jpg');
+    const blob = await response.blob();
+    document.getElementById('rainbow').src = URL.createObjectURL(blob);
 }
 
-catchRainbow()
-.then(response => {
-    console.log('success!');
-})
-.catch(error => {
-    console.log('error!');
-    console.log(error);
+catchRainbow().catch(error => {
+    console.log('error');
 });
 
 
+// Example using .then
 
-/*
-fetch('rainbow.jpg').then(response => {
-    console.log(response);
-    return response.blob();
-}).then(blob => {
-    console.log(blob);
-    document.getElementById('rainbow').src = URL.createObjectURL(blob);
-})
-.catch(error => {
-    console.error(error);
-});
-*/
+// fetch('rainbow.jpg').then(response => {
+//         console.log(response);
+//         return response.blob();
+//     })
+//     .then(blob => {
+//         console.log(blob);
+//         document.getElementById('rainbow').src = URL.createObjectURL(blob);
+//     })
+//     .catch(error => {
+//         console.log('error!')
+//         console.error(error);
+//     });
